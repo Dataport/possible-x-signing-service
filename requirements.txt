@@ -1,0 +1,10 @@
+jupyter
+Jinja2
+python-dotenv
+python-jose
+jwcrypto
+serialization
+pyld
+jcs
+Faker
+Flask==2.3.3
