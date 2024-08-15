@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
-from utils import normalize, sha256_normalized_vc
+from jwcrypto import jwk
+
+from utils import normalize, sha256_normalized_vc, sign_doc
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -17,6 +19,27 @@ def normalize_urdna2015():
     response = {
         'message': 'VC document successfully normalized and hashed!',
         'data': h
+    }
+    return jsonify(response), 201
+
+@app.route('/sign', methods=['POST'])
+def sign_vc():
+    print("*** Inside /sign")
+    data = request.json
+    print("Data: ", data)
+
+    doc = data['document']
+    issuer_verification_method = data['issuer_verification_method']
+    with open('privkey.pem', 'r') as file:
+        priv_key_string = file.read()
+        priv_key = jwk.JWK.from_pem(priv_key_string.encode("UTF-8"))
+
+    vc = sign_doc(doc, priv_key, issuer_verification_method)
+    print("VC: ", vc)
+
+    response = {
+        'message': 'VC document successfully signed',
+        'data': vc
     }
     return jsonify(response), 201
 
