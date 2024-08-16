@@ -92,33 +92,32 @@ Signs a Verifiable Credential (VC) document with a private key and returns the s
 ## Setup and Installation
 
 ### Prerequisites
-- Python 3.12+
-- `pip` package manager
+- Docker
 
 ### Installation Steps
+
 1. **Clone the Repository**:
    ```bash
    git clone https://gitlab.fokus.fraunhofer.de/possible/normalization-urdna2015.git
    cd normalization-urdna2015
    ```
 
-2. **Create and Activate a Virtual Environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+2. **Add a Private Key**:
+    Add an RSA private key in a `privkey.pem` file in the root folder.
 
-3. **Install Dependencies**:
+3. **Build the Docker Image**:
    ```bash
-   pip install -r requirements.txt
-   ```
+    docker build -t normalization-urdna2015 .
+    ```
 
-4. **Run the Application**:
+4. **Build the Docker Container**:
    ```bash
-   python server.py
-   ```
+    docker run -d -p PORT:2021 --name normalization-urdna2015 normalization-urdna2015
+    ```
+    This command starts the container and maps port PORT on your local machine to port 8080 in the container.
 
-The application will run on `http://localhost:2021` by default.
+5. **Access the Application**:
+    Open your browser and navigate to http://localhost:PORT. The application will be accessible at this address.
 
 ## Project Structure
 
