@@ -1,3 +1,9 @@
 venv/
 __pycache__/
 privkey.pem
+bin
+etc
+lib
+lib64
+pyvenv.cfg
+share

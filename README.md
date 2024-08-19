@@ -103,7 +103,7 @@ Signs a Verifiable Credential (VC) document with a private key and returns the s
    ```
 
 2. **Add a Private Key**:
-    Add an RSA private key in a `privkey.pem` file in the root folder.
+    Add an RSA private key in a `privkey.pem` file in the root folder or set the raw key via the environment variable `FLASK_PRIVATE_KEY`
 
 3. **Build the Docker Image**:
    ```bash
