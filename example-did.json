@@ -1,0 +1,25 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/jws-2020/v1"
+  ],
+  "id": "did:web:didwebservice.int.possible-x.de:participant:22d5ba97-469f-3ba6-bbcb-150c6bf56a95",
+  "verificationMethod": [
+    {
+      "@context": [
+        "https://w3c-ccg.github.io/lds-jws2020/contexts/v1/"
+      ],
+      "id": "did:web:didwebservice.int.possible-x.de:participant:22d5ba97-469f-3ba6-bbcb-150c6bf56a95#JWK2020-PossibleLetsEncrypt",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:didwebservice.int.possible-x.de",
+      "publicKeyJwk": {
+        "kty": "RSA",
+        "n": "ANyMCLhP98vAl0wCuVs6frnjL0VeJhy6N2N8kRJuMYkkuld-UL8B1XBpsVWU085xFRK2Ro4j7Fs125nnlfLAsf-V6i8PtgpiW7schTv1Ad4ijJ5ibEt7OOZkg-tO3h0hIkEcsBWT9wqUgy4iQbqij7lokS41O_-rZrJ-SosOp1KjD6YuNsIt4VJr0-N9tvRI0RB2VhbBEW2FNdWs7bL7N3M08wYNudYMh0jjwGwqXP0uK3y7pz8chtLwiy4HH41P6DDlepgHtGlkpDwPj2tK22aVnpp4LpdZRwtE9aOmMFfbunn5cv904Nji99-gfsvNSccY0DBH4Y4GapKQ8VJb0oM=",
+        "e": "AQAB",
+        "alg": "PS256",
+        "x5u": "https://didwebservice.int.possible-x.de/.well-known/cert.ss.pem"
+      }
+    }
+  ],
+  "alsoKnownAs": []
+}

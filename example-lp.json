@@ -1,0 +1,62 @@
+// CHANGES
+// 1. Signed with private key corresponding to Dataspace Governance Authority
+// 2. Issuer is did of legal participant
+// 3. Verification Method corresponds to legal participant's did document
+
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/jws-2020/v1",
+    "https://registry.lab.gaia-x.eu/development/api/trusted-shape-registry/v1/shapes/jsonld/trustframework#"
+  ],
+  "credentialSubject": {
+    "@context": {
+      "px": "http://w3id.org/gaia-x/possible-x#",
+      "schema": "https://schema.org/",
+      "vcard": "http://www.w3.org/2006/vcard/ns#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "@type": [
+      "gx:LegalParticipant"
+    ],
+    "gx:headquarterAddress": {
+      "gx:countryCode": "DE",
+      "gx:countrySubdivisionCode": "DE-RP",
+      "vcard:locality": "Montabaur",
+      "vcard:postal-code": "56410",
+      "vcard:street-address": "Elgendorfer Str. 57"
+    },
+    "gx:legalAddress": {
+      "gx:countryCode": "DE",
+      "gx:countrySubdivisionCode": "DE-RP",
+      "vcard:locality": "Montabaur",
+      "vcard:postal-code": "56410",
+      "vcard:street-address": "Elgendorfer Str. 57"
+    },
+    "gx:legalRegistrationNumber": {
+      "@context": {
+        "gx": "https://registry.lab.gaia-x.eu/development/api/trusted-shape-registry/v1/shapes/jsonld/trustframework#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+      },
+      "@type": "gx:legalRegistrationNumber",
+      "gx:vatID": "DE815563912",
+      "type": "gx:legalRegistrationNumber"
+    },
+    "id": "did:web:didwebservice.int.possible-x.de:participant:22d5ba97-469f-3ba6-bbcb-150c6bf56a95",
+    "px:mailAddress": "info@ionos.de",
+    "schema:description": "Mit mehr als 6,2 Millionen Kundinnen und Kunden ist IONOS der führende Digitalisierungs-Partner für kleine und mittlere Unternehmen (KMU) und zuverlässiger Cloud-Enabler.",
+    "schema:name": "IONOS SE"
+  },
+  "id": "urn:uuid:49015e2f-9813-40df-b25d-db922f6554d4",
+  "issuanceDate": "2024-06-14T12:08:56.739Z",
+  // "issuer": "did:web:ids.fokus.fraunhofer.de",
+  "issuer": "did:web:didwebservice.int.possible-x.de:participant:22d5ba97-469f-3ba6-bbcb-150c6bf56a95",
+  "proof": {
+    "jws": "eyJhbGciOiJQUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..TnjfryNfgemzYYnxn7YgpdoTUx6Q7SwbCc_UCFOKrBnBfJnTMKRqsiX4NmU1IoQ11OYiqj6AcHssuwy_2cWl0nkfFmXS3G6N5si2pDJMHA1APiaWV3trI42Fez7jJ36i217CWCtHVKSQhTvk07hdZwdU2GkWdBTh6DX5P92k9kxFyPKyazxxkMqn2e3DFVgERWkEjbjZv6KlW-lRVtAhG1_1CWNqTojJWiWyabw3HS42fC3VRQeiNfGTggd5pmo0SXEfb02101S3H3zdy500Ur4G3befSTTmbu5_e9BtmrlPh6g0W13_sy36t_tn92VPFv5j-UbK9i6rF_eoHebqMg",
+    "proofPurpose": "assertionMethod",
+    "type": "JsonWebSignature2020",
+    // "verificationMethod": "did:web:ids.fokus.fraunhofer.de#JWK2020-RSA",
+    "verificationMethod": "did:web:didwebservice.int.possible-x.de:participant:22d5ba97-469f-3ba6-bbcb-150c6bf56a95#JWK2020-RSA"
+  },
+  "type": "VerifiableCredential"
+}

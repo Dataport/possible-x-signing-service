@@ -75,12 +75,18 @@ def sign_vc():
 
         doc = data['document']
         verification_method = data['verification_method']
+
+        logger.debug("")
+        logger.debug(f"doc: {doc}")
+        logger.debug("")
+        logger.debug(f"verification method: {verification_method}")
         
         with open('privkey.pem', 'r') as file:
             priv_key_string = file.read()
             priv_key = jwk.JWK.from_pem(priv_key_string.encode("UTF-8"))
 
         vc = sign_doc(doc, priv_key, verification_method)
+        logger.debug("")
         logger.debug(f"Signed VC: {vc}")
 
         response = {
@@ -130,7 +136,7 @@ def hash_jsonld(doc):
         
         h = sha256_normalized_vc(normalized_doc)
         logger.debug(f"Hash: {h.hexdigest()}")
-        
+         
         return h.hexdigest()
     
     except Exception as e:
@@ -143,4 +149,4 @@ def page_not_found(e):
     return jsonify({'error': 'Page not found!'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=2021)
