@@ -81,7 +81,7 @@ def sign_vc():
             priv_key = jwk.JWK.from_pem(priv_key_string.encode("UTF-8"))
 
         vc = sign_doc(doc, priv_key, verification_method)
-        logger.debug(f"Signed VC: {vc}")
+        logger.debug(f"\n*** Signed VC: {vc}")
 
         response = {
             'message': 'VC document successfully signed',
@@ -143,4 +143,4 @@ def page_not_found(e):
     return jsonify({'error': 'Page not found!'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=2021)
