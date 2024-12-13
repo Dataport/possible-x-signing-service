@@ -7,10 +7,23 @@ from utils import normalize, sha256_normalized_vc, sign_doc
 
 # Initialize the Flask application
 app = Flask(__name__)
+app.config.from_prefixed_env()
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
+
+private_key = None
+
+if "PRIVATE_KEY" in app.config: 
+    logger.info("Loading Private Key from environment")
+    priv_key_string = app.config["PRIVATE_KEY"]
+else:
+    logger.info("Loading Private Key from file")
+    with open('privkey.pem', 'r') as file:
+        priv_key_string = file.read()
+
+private_key = jwk.JWK.from_pem(priv_key_string.encode("UTF-8"))
 
 @app.route('/normalize/urdna2015', methods=['POST'])
 def normalize_urdna2015():
@@ -67,7 +80,7 @@ def sign_vc():
     Input: VC document
     Output: VC
     '''
-    logger.info("*** Inside /sign")
+    logger.debug("*** Inside /sign")
     
     try:
         data = request.json
@@ -75,12 +88,8 @@ def sign_vc():
 
         doc = data['document']
         verification_method = data['verification_method']
-        
-        with open('privkey.pem', 'r') as file:
-            priv_key_string = file.read()
-            priv_key = jwk.JWK.from_pem(priv_key_string.encode("UTF-8"))
 
-        vc = sign_doc(doc, priv_key, verification_method)
+        vc = sign_doc(doc, private_key, verification_method)
         logger.debug(f"\n*** Signed VC: {vc}")
 
         response = {
@@ -137,10 +146,17 @@ def hash_jsonld(doc):
         logger.error(f"Error in hash_jsonld: {e}")
         raise
 
+@app.route('/')
+def home():
+    return {
+        "message": "Welcome to the POSSIBLE-X signing service!",
+        "status": "good"
+    }
+
 # Error handling: 404 Not Found
 @app.errorhandler(404)
 def page_not_found(e):
     return jsonify({'error': 'Page not found!'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=2021)
+    app.run(debug=True, host='0.0.0.0', port=9000)
