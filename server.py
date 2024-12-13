@@ -22,8 +22,9 @@ else:
     logger.info("Loading Private Key from file")
     with open('privkey.pem', 'r') as file:
         priv_key_string = file.read()
-
+        
 private_key = jwk.JWK.from_pem(priv_key_string.encode("UTF-8"))
+logger.debug(private_key)
 
 @app.route('/normalize/urdna2015', methods=['POST'])
 def normalize_urdna2015():
