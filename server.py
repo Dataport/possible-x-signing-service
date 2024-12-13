@@ -92,12 +92,8 @@ def sign_vc():
         verification_method = data['verification_method']
         logger.debug(f"doc: {doc}")
         logger.debug(f"verification method: {verification_method}")
-        
-        with open('privkey.pem', 'r') as file:
-            priv_key_string = file.read()
-            priv_key = jwk.JWK.from_pem(priv_key_string.encode("UTF-8"))
 
-        vc = sign_doc(doc, priv_key, verification_method)
+        vc = sign_doc(doc, private_key, verification_method)
         logger.debug(f"\n*** Signed VC: {vc}")
 
         response = {
