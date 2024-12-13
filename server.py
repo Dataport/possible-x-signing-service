@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 private_key = None
 
 logger.info("APP CONFIG: %s", app.config)
-if "FLASK_PRIVATE_KEY" in app.config: 
+if "PRIVATE_KEY" in app.config: 
     logger.info("Loading Private Key from environment")
     priv_key_string = app.config["PRIVATE_KEY"]
 else:
