@@ -1,4 +1,4 @@
-# Normalization-URDNA2015
+# POSSIBLE-X Gaia-X Signing Service
 
 This project provides a simple Flask-based API for normalizing, hashing, and signing Verifiable Credential (VC) documents. The API supports two main operations: normalizing and hashing a VC document, and signing a VC document with a private key.
 
@@ -124,3 +124,6 @@ Signs a Verifiable Credential (VC) document with a private key and returns the s
 - **`server.py`**: The main Flask application file containing the API endpoints and core logic.
 - **`utils.py`**: Utility functions for JSON-LD normalization, SHA-256 hashing, and document signing.
 - **`privkey.pem`**: The private key file used for signing Verifiable Credential documents. 
+
+## Copyright
+Fraunhofer FOKUS - https://www.fokus.fraunhofer.de/
